@@ -12,7 +12,10 @@ require('dotenv').load();
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
-var opener = require('opener');
+var opener = null;
+if(app.get('env') === 'development') {
+   opener = opener("http://localhost:" + server.address().port);
+}
 
 /*****************************************************************************
 *************************** DEPENDENCIES SECTION *****************************
