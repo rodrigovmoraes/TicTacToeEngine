@@ -12,10 +12,7 @@ require('dotenv').load();
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
-var opener = null;
-if(app.get('env') === 'development') {
-   opener = opener("http://localhost:" + server.address().port);
-}
+
 
 /*****************************************************************************
 *************************** DEPENDENCIES SECTION *****************************
@@ -24,6 +21,11 @@ if(app.get('env') === 'development') {
 
 //-----------------------------------------------------------------------------
 var app = express();
+
+var opener = null;
+if(app.get('env') === 'development') {
+   opener = opener("http://localhost:" + server.address().port);
+}
 
 app.set('view engine', 'html');    // use .html extension for templates
 app.set('views', path.join(__dirname, 'appViews'));
